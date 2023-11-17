@@ -5,9 +5,12 @@
   "peerDependencies": {
     "react": "*",
     "react-native-paper": "*",
+    "react-native-pager-view": "*",
     "styled-components": "*",
     "react-sweet-state": "*",
     "lodash": "*",
-    "@expo/vector-icons": "*"
+    "@expo/vector-icons": "*",
+    "@codexporer.io/expo-layout-state": "*",
+    "@codexporer.io/react-hooks": "*"
   }
 }
