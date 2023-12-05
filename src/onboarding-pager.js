@@ -114,8 +114,8 @@ export const OnboardingPager = ({ pages }) => {
                 />
             )}
             <Content>
-                <PageTitle>{page.title}</PageTitle>
-                <PageText>{page.text}</PageText>
+                {!!page.title && <PageTitle>{page.title}</PageTitle>}
+                {!!page.text && <PageText>{page.text}</PageText>}
                 {!!page.actions && (
                     <PageActions>
                         {map(page.actions, (action, index) => (
@@ -131,6 +131,7 @@ export const OnboardingPager = ({ pages }) => {
                         ))}
                     </PageActions>
                 )}
+                {page.footerContent ?? false}
             </Content>
         </Page>
     );
