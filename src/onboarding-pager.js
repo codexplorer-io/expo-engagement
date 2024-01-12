@@ -21,6 +21,10 @@ export const Page = styled.View`
     flex: 1;
 `;
 
+export const Scroll = styled.ScrollView`
+    flex: 1;
+`;
+
 export const IMAGE_MARGIN = 20;
 export const HeaderImage = styled.Image`
     width: ${({ width }) => width}px;
@@ -100,39 +104,41 @@ export const OnboardingPager = ({ pages }) => {
             key={`${page.key}-page`}
             collapsable={false}
         >
-            {page.image && (
-                <HeaderImage
-                    source={page.image.source}
-                    width={currentLayout.width - IMAGE_MARGIN * 2}
-                    height={
-                        Math.floor(
-                            currentLayout.height *
-                            page.image.viewHeightPercantage
-                        )
-                    }
-                    resizeMode='contain'
-                />
-            )}
-            <Content>
-                {!!page.title && <PageTitle>{page.title}</PageTitle>}
-                {!!page.text && <PageText>{page.text}</PageText>}
-                {!!page.actions && (
-                    <PageActions>
-                        {map(page.actions, (action, index) => (
-                            <Fragment key={action.key}>
-                                {index !== 0 && <ActionSpacer />}
-                                <PageAction
-                                    onPress={action.handler}
-                                    mode='contained'
-                                >
-                                    {action.text}
-                                </PageAction>
-                            </Fragment>
-                        ))}
-                    </PageActions>
+            <Scroll>
+                {page.image && (
+                    <HeaderImage
+                        source={page.image.source}
+                        width={currentLayout.width - IMAGE_MARGIN * 2}
+                        height={
+                            Math.floor(
+                                currentLayout.height *
+                                page.image.viewHeightPercantage
+                            )
+                        }
+                        resizeMode='contain'
+                    />
                 )}
-                {page.footerContent ?? false}
-            </Content>
+                <Content>
+                    {!!page.title && <PageTitle>{page.title}</PageTitle>}
+                    {!!page.text && <PageText>{page.text}</PageText>}
+                    {!!page.actions && (
+                        <PageActions>
+                            {map(page.actions, (action, index) => (
+                                <Fragment key={action.key}>
+                                    {index !== 0 && <ActionSpacer />}
+                                    <PageAction
+                                        onPress={action.handler}
+                                        mode='contained'
+                                    >
+                                        {action.text}
+                                    </PageAction>
+                                </Fragment>
+                            ))}
+                        </PageActions>
+                    )}
+                    {page.footerContent ?? false}
+                </Content>
+            </Scroll>
         </Page>
     );
 
