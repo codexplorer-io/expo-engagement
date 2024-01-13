@@ -7,26 +7,26 @@ import map from 'lodash/map';
 import { useDimensions } from '@codexporer.io/react-hooks';
 import { useLayout } from '@codexporer.io/expo-layout-state';
 
-export const SafeArea = styled.SafeAreaView`
+const SafeArea = styled.SafeAreaView`
     flex: 1;
 `;
 
-export const AnimatedPagerView = styled(Animated.createAnimatedComponent(PagerView))`
+const AnimatedPagerView = styled(Animated.createAnimatedComponent(PagerView))`
     flex: 1;
 `;
 
-export const Page = styled.View`
+const Page = styled.View`
     padding-top: 20px;
     display: flex;
     flex: 1;
 `;
 
-export const Scroll = styled.ScrollView`
+const Scroll = styled.ScrollView`
     flex: 1;
 `;
 
-export const IMAGE_MARGIN = 20;
-export const HeaderImage = styled.Image`
+const IMAGE_MARGIN = 20;
+const HeaderImage = styled.Image`
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
     margin-left: ${IMAGE_MARGIN}px;
@@ -34,7 +34,7 @@ export const HeaderImage = styled.Image`
     /* background-color: red; */
 `;
 
-export const Content = styled.View`
+const Content = styled.View`
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 40px;
@@ -45,14 +45,14 @@ export const Content = styled.View`
     /* background-color: blue; */
 `;
 
-export const PageTitle = styled(Title)`
+const PageTitle = styled(Title)`
     text-align: center;
     color: ${({ theme }) => theme.colors.primary};
     font-weight: 600;
     font-size: 28px;
 `;
 
-export const PageText = styled(Text)`
+const PageText = styled(Text)`
     text-align: center;
     font-weight: 400;
     font-size: 16px;
@@ -60,20 +60,20 @@ export const PageText = styled(Text)`
     margin-top: 10px;
 `;
 
-export const PageActions = styled.View`
+const PageActions = styled.View`
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    margin-top: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 `;
 
-export const PageAction = styled(Button)``;
-
-export const ActionSpacer = styled.View`
-    width: 20px;
+const PageAction = styled(Button)`
+    margin: 10px;
+    margin-bottom: 0;
 `;
 
-export const PageIndicatorWrapper = styled.View`
+const PageIndicatorWrapper = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -81,7 +81,7 @@ export const PageIndicatorWrapper = styled.View`
     padding-bottom: 20px;
 `;
 
-export const PageIndicator = styled.View`
+const PageIndicator = styled.View`
     width: 10px;
     height: 10px;
     border-radius: 5px;
@@ -123,9 +123,8 @@ export const OnboardingPager = ({ pages }) => {
                     {!!page.text && <PageText>{page.text}</PageText>}
                     {!!page.actions && (
                         <PageActions>
-                            {map(page.actions, (action, index) => (
+                            {map(page.actions, action => (
                                 <Fragment key={action.key}>
-                                    {index !== 0 && <ActionSpacer />}
                                     <PageAction
                                         onPress={action.handler}
                                         mode='contained'
