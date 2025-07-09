@@ -6,8 +6,9 @@ import PagerView from 'react-native-pager-view';
 import map from 'lodash/map';
 import { useDimensions } from '@codexporer.io/react-hooks';
 import { useLayout } from '@codexporer.io/expo-layout-state';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const SafeArea = styled.SafeAreaView`
+const SafeArea = styled(SafeAreaView)`
     flex: 1;
 `;
 
@@ -144,6 +145,7 @@ export const OnboardingPager = ({ pages }) => {
     return (
         <SafeArea
             onLayout={event => setCurrentLayout(event.nativeEvent.layout)}
+            edges={['right', 'bottom', 'left']}
         >
             {pages.length === 1 && renderPage(pages[0])}
             {pages.length > 1 && (

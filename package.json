@@ -11,6 +11,7 @@
     "lodash": "*",
     "@expo/vector-icons": "*",
     "@codexporer.io/expo-layout-state": "*",
-    "@codexporer.io/react-hooks": "*"
+    "@codexporer.io/react-hooks": "*",
+    "react-native-safe-area-context": "*"
   }
 }
